@@ -44,7 +44,7 @@
 	},
 	"noun-ize": {
 		"base": "ize",
-		"link": "iz",
+		"link": "iza",
 		"from": "noun",
 		"to": "verb",
 		"conj": "a",
@@ -72,7 +72,7 @@
 		"link": "tor",
 		"from": "verb",
 		"to": "noun",
-		"tail-mutator": [{"old": "ce", "new": "ct"}],
+		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
 		"description": "agent who performs"
 	},
 	"adj-ty": {
@@ -102,5 +102,12 @@
 		"from": "adj",
 		"to": "verb",
 		"description": "to cause to become"
+	},
+	"adj-ize": {
+		"base": "ize",
+		"link": "iza",
+		"from": "adj",
+		"to": "verb",
+		"description": "to cause to become (2)"
 	}
 }

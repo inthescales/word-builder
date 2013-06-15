@@ -134,7 +134,8 @@
 		"base" : "cadere",
 		"link" : "cade",
 		"conj" : "e",
-		"category" : "verb"
+		"category" : "verb",
+		"exception" : [{"prev": "in", "link": "cide"}, {"prev": "de", "link": "cide"}, {"prev": "in", "next": "verb-nce", "link": "cide"}]
 	},
 	"follow" : {
 		"base" : "sequi",
@@ -149,19 +150,26 @@
 		"category" : "verb"
 	},
 	"lead" : {
-		"base" : "ducere",
+		"base" : "duce",
 		"link" : "duce",
 		"conj" : "e",
 		"category" : "verb"
 	},
 	"put" : {
-		"base" : "ponere",
+		"base" : "pone",
 		"link" : "pone",
 		"conj" : "e",
 		"category" : "verb"
 	},
+	"see" : {
+		"base" : "vise",
+		"link" : "vise",
+		"conj" : "e",
+		"category" : "verb",
+		"exception" : [{"next": "verb-nce", "link": "vide"}]
+	},
 	"stand" : {
-		"base" : "stare",
+		"base" : "state",
 		"link" : "sta",
 		"conj" : "a",
 		"category" : "verb"
@@ -173,13 +181,13 @@
 		"category" : "verb"
 	},
 	"trust" : {
-		"base" : "fidere",
+		"base" : "fide",
 		"link" : "fide",
 		"conj" : "e",
 		"category" : "verb"
 	},
 	"walk" : {
-		"base" : "ambulare",
+		"base" : "ambulate",
 		"link" : "ambula",
 		"conj" : "a",
 		"category" : "verb"

@@ -56,7 +56,7 @@
 		"from": "verb",
 		"to": "noun",
 		"consonant-padding": "t",
-		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "de", "new": "s"}],
+		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "de", "new": "s"}, {"old": "se", "new": "s-"}],
 		"description": "the act of" 
 	},
 	"verb-nce": {
@@ -72,8 +72,24 @@
 		"link": "tor",
 		"from": "verb",
 		"to": "noun",
-		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
+		"tail-mutator": [{"old": "ce", "new": "c"}, {"old": "de", "new": "s"}, {"old": "za", "new": "z-"}, {"old": "se", "new": "s-"}],
 		"description": "agent who performs"
+	},
+	"verb-tory": {
+		"base": "tory",
+		"link": "tori",
+		"from": "verb",
+		"to": "adj",
+		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
+		"description": "having to do with"
+	},
+	"verb-tory": {
+		"base": "tory",
+		"link": "tori",
+		"from": "verb",
+		"to": "noun",
+		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
+		"description": "place where occurs"
 	},
 	"adj-ty": {
 		"base": "ity",

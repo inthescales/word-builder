@@ -9,12 +9,14 @@ Usage
 Word builder can be used to process a single request, or run as a server to accept requests from clients.
 
 To run a request:
-	wb.rb [tokens...]
+    
+    wb.rb [tokens...]
 
 To run as a server:
-	wb.rb run [port]
+
+    wb.rb run [port]
 	
-	If no port is specified, the server will run on port 2000.
+If no port is specified, the server will run on port 2000.
 	
 Acceptable input is a sequence of the words (e.g. 'money') and affixes (e.g. noun-ous) specified in the language files.
 Affixes must follow a word of the type listed. For instance, 'noun-ous' must follow a noun, whether it is a basic noun

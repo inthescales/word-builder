@@ -1,0 +1,48 @@
+direct from latin:
+
+NOUN derived:
+
+war (bellum), varix/varicis (this seems to be rare?)
+-icosus -> -icose
+-icositas -> -icosity
+
+money (pecunia)
+-arius -> ary
+-ousus -> ous
+
+religion (religio, religionis)
+-osus -> -ous
+-ositas -> -osity
+
+ADJ derived:
+
+beautiful (pulchra - pulchritudo, pulchritudinis), grata, fortis, alta, others
+-itudo -> -itude (nom)
+-itudino -> -itudinous
+(^ remember - these two are really the same. Nom vs. inflected)
+
+cheerful (hilaris), absurdus
+-itas -> -ity
+
+happenstance (fortuitus)
+-ous ????
+
+animus (spirit or w/e)
+animosus -> animous?
+animositas -> animosity
+
+----
+
+observations:
+adj. in -us can take -ity quite easily
+
+transformations (that can't be represented with padding):
+-ous + -ity -> -osity
+-able + -ity -> -ability
+
+SHIT:
+anonymity (not anonymosity) (probably not latin?)
+
+idea:
+-ous is default, special exceptions use -icose.
+Consider this for other affixes as well, if they're rare

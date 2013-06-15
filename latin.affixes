@@ -1,0 +1,106 @@
+{
+	"noun-ine": {
+		"base": "ine",
+		"link": "in",
+		"from": "noun",
+		"to": "adj",
+		"description": "having the nature of"
+	},
+	"noun-ile": {
+		"base": "ile",
+		"link": "il",
+		"from": "noun",
+		"to": "adj",
+		"description": "the capacity of"
+	},
+	"noun-ous": {
+		"base": "ous",
+		"link": "os",
+		"from": "noun",
+		"to": "adj",
+		"description": "abounding in"
+	},
+	"noun-ary": {
+		"base": "ary",
+		"link": "ar",
+		"from": "noun",
+		"to": "adj",
+		"description": "relating to"
+	},
+	"noun-al": {
+		"base": "a",
+		"link": "a",
+		"from": "noun",
+		"to": "adj",
+		"description": "relating to",
+		"consonant-dissonance" : ["l", "r"]
+	},
+	"noun-id": {
+		"base": "id",
+		"link": "id",
+		"from": "noun",
+		"to": "adj",
+		"description": "belonging to the class of"
+	},
+	"noun-ize": {
+		"base": "ize",
+		"link": "iz",
+		"from": "noun",
+		"to": "verb",
+		"conj": "a",
+		"description": "to cause to become"
+	},
+	"verb-tion": {
+		"base": "ion",
+		"link": "ion",
+		"from": "verb",
+		"to": "noun",
+		"consonant-padding": "t",
+		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "de", "new": "s"}],
+		"description": "the act of" 
+	},
+	"verb-nce": {
+		"base": "nce",
+		"link": "nt",
+		"from": "verb",
+		"to": "noun",
+		"stem-change": "yes",
+		"description": "process, state, or quality of"
+	},
+	"verb-tor": {
+		"base": "tor",
+		"link": "tor",
+		"from": "verb",
+		"to": "noun",
+		"tail-mutator": [{"old": "ce", "new": "ct"}],
+		"description": "agent who performs"
+	},
+	"adj-ty": {
+		"base": "ity",
+		"link": "it",
+		"from": "adj",
+		"to": "noun",
+		"description": "condition or quality of being"
+	},
+	"adj-tude": {
+		"base": "itude",
+		"link": "itudin",
+		"from": "adj",
+		"to": "noun",
+		"description": "abstract concept of"
+	},
+	"adj-ate": {
+		"base": "ate",
+		"link": "at",
+		"from": "adj",
+		"to": "verb",
+		"description": "to make"
+	},
+	"adj-ify": {
+		"base": "ify",
+		"link": "ifica",
+		"from": "adj",
+		"to": "verb",
+		"description": "to cause to become"
+	}
+}

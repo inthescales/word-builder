@@ -18,7 +18,8 @@
 		"link": "os",
 		"from": "noun",
 		"to": "adj",
-		"description": "abounding in"
+		"description": "abounding in",
+		"exception": [{"prev": "war", "base": "ose", "link": "os"}]
 	},
 	"noun-ary": {
 		"base": "ary",

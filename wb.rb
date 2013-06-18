@@ -5,6 +5,8 @@ require 'socket'
 @dictionary = {}
 @affixes = {}
 
+@use_exceptions = true
+
 # Import language
 def import_dictionary(lang)
 	@dictionary = JSON.parse(IO.read(lang+".words"));
@@ -65,6 +67,40 @@ def get_category(token)
 	r = token["category"]
 	if r == nil then r = token["to"] end
 	return r
+end
+
+def get_base(entry, prev, nex)
+	return get_exception("base", entry, prev, nex)
+end
+
+def get_link(entry, prev, nex)
+	return get_exception("link", entry, prev, nex)
+end
+
+def get_exception(term, entry, prev, nex)
+
+	if @use_exceptions == false or entry["exception"] == nil then return entry[term] end
+
+	entry["exception"].each do |ex|
+		bail = false
+
+		if ex[term] == nil
+			then bail = true end
+
+		if !bail and ex["prev"] != nil and ex["prev"] != prev
+			then bail = true end
+
+		if !bail and ex["next"] != nil and ex["next"] != nex
+			then bail = true end
+
+		if !bail
+			return ex[term]
+		else
+			return entry[term]
+		end
+	
+	end
+	
 end
 
 # Target language spelling rules
@@ -143,6 +179,9 @@ def generate(input)
 			entry = entries[j]
 			next_entry = entries[j+1]
 			prev_entry = entries[j-1]
+			base = get_base(entry, prev_comp, next_comp)
+			link = get_link(entry, prev_comp, next_comp)
+			print "base = ", base, ", link = ", link, "\n"
 			
 			# Make changes to the word so far ------------
 
@@ -191,49 +230,48 @@ def generate(input)
 			# If it doesn't assimilate, use base or link as appropriate
 			if entry["assimilation"] == nil
 				if j == parsed["words"][i].length-1
-					add += entry["base"];
+					add += base
 				else
-					add += entry["link"];
+					add += link
 				end
 				
 			# Assimilate to fit with the next sound if necessary
 			elsif j < entries.length-1
 				assim = entry["assimilation"]
-				nesxt_letter = next_entry[0]
+				next_letter = next_entry["base"][0]
 				
 				assim.each do |type|
 					# Check each type of assimilation this entry uses until we find one that matches
 					# the next letter
 					if type[1].include?(next_letter) or type[1].include?("*")
-						
 						# use link form
 						if type[0] == "link"
-							add = entry["link"]
+							add = link
 							break
 							
 						# use base form
 						elsif type[0] == "base"
-							add = entry["base"]
+							add = base
 							break
 						
 						# use a nasal that fits with following sound
 						elsif type[0] == "nasal"
 							
 							if next_letter == 'm' or next_letter == 'p' or next_letter == 'b'
-								add = entry["link"] + 'm';
+								add = link + 'm';
 							else
-								add = entry["link"] + 'n';
+								add = link + 'n';
 							end
 							break
 							
 						# duplicate following consonant
 						elsif type[0] == "double"
-							add = entry["link"] + next_letter
+							add = link + next_letter
 							break
 
 						# remove next letter
 						elsif type[0] == "cut"
-							add = entry["base"] + "-"
+							add = base + "-"
 							break
 							
 						# replace with a specified alternative

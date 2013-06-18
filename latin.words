@@ -108,7 +108,8 @@
 	"war" : {
 		"base" : "bellum",
 		"link" : "bell",
-		"category" : "noun"
+		"category" : "noun",
+		"exception" : [{"next": "noun-ous", "link": "bellic"}]
 	},
 	"beautiful": {
 		"base" : "pulcher",
@@ -135,7 +136,7 @@
 		"link" : "cade",
 		"conj" : "e",
 		"category" : "verb",
-		"exception" : [{"prev": "in", "link": "cide"}, {"prev": "de", "link": "cide"}, {"prev": "in", "next": "verb-nce", "link": "cide"}]
+		"exception" : [{"prev": "in", "base": "cide", "link": "cide"}, {"prev": "down_from", "link": "cide"}, {"prev": "in", "next": "verb-nce", "link": "cide"}]
 	},
 	"follow" : {
 		"base" : "sequi",

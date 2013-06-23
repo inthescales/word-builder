@@ -132,12 +132,22 @@ def generate(input)
 		current = "";
 		entries = []
 		
-		# Get entries and check for errors
+		# Get entries, rout, and check for errors
 		for j in 0..parsed["words"][i].length-1
 			token = parsed["words"][i][j]
 			entries[j] = get_entry(token)
 			entry = entries[j]
 			ok = true
+			
+			# Rout - replace the next token with another one specified by the current one
+			if entry["rout"] != nil and j < parsed["words"][i].length-1
+				entry["rout"].each do |r|
+					print "HERE\n"
+					if parsed["words"][i][j+1] == r[0]
+						parsed["words"][i][j+1] = r[1]
+					end
+				end
+			end
 			
 			if entry == nil
 				print "ERROR: token \"", token, "\" not found."

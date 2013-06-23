@@ -26,7 +26,7 @@
 		"link": "ar",
 		"from": "noun",
 		"to": "adj",
-		"description": "relating to"
+		"description": "connected with or pertaining to"
 	},
 	"noun-al": {
 		"base": "a",
@@ -42,6 +42,20 @@
 		"from": "noun",
 		"to": "adj",
 		"description": "belonging to the class of"
+	},
+	"noun-eer": {
+		"base": "eer",
+		"link": "eer",
+		"from": "noun",
+		"to": "noun",
+		"description": "one who operates or deals in"
+	},
+	"noun-ary2": {
+		"base": "ary",
+		"link": "ari",
+		"from": "noun",
+		"to": "noun",
+		"description": "one engaged in"
 	},
 	"noun-ize": {
 		"base": "ize",
@@ -76,6 +90,14 @@
 		"tail-mutator": [{"old": "ce", "new": "c"}, {"old": "de", "new": "s"}, {"old": "za", "new": "z-"}, {"old": "se", "new": "s-"}],
 		"description": "agent who performs"
 	},
+	"verb-nt": {
+		"base": "nt",
+		"link": "nt",
+		"from": "verb",
+		"to": "adj",
+		"stem-change": "yes",
+		"description": "in a state of"
+	},
 	"verb-tory": {
 		"base": "tory",
 		"link": "tori",
@@ -84,13 +106,22 @@
 		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
 		"description": "having to do with"
 	},
-	"verb-tory": {
+	"verb-tory2": {
 		"base": "tory",
 		"link": "tori",
 		"from": "verb",
 		"to": "noun",
 		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
 		"description": "place where occurs"
+	},
+	"verb-torium": {
+		"base": "torium",
+		"link": "tori",
+		"from": "verb",
+		"to": "noun",
+		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
+		"description": "place where occurs",
+		"hidden": "true"
 	},
 	"adj-ty": {
 		"base": "ity",
@@ -125,6 +156,6 @@
 		"link": "iza",
 		"from": "adj",
 		"to": "verb",
-		"description": "to cause to become (2)"
+		"description": "to make into, or subject to"
 	}
 }

@@ -145,7 +145,7 @@
 		"category" : "verb"
 	},
 	"hear" : {
-		"base" : "audire",
+		"base" : "audit",
 		"link" : "audi",
 		"conj" : "i",
 		"category" : "verb",

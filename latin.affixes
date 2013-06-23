@@ -4,6 +4,7 @@
 		"link": "in",
 		"from": "noun",
 		"to": "adj",
+		"category" : "suffix",
 		"description": "having the nature of"
 	},
 	"noun-ile": {
@@ -11,6 +12,7 @@
 		"link": "il",
 		"from": "noun",
 		"to": "adj",
+		"category" : "suffix",
 		"description": "the capacity of"
 	},
 	"noun-ous": {
@@ -19,6 +21,7 @@
 		"from": "noun",
 		"to": "adj",
 		"description": "abounding in",
+		"category" : "suffix",
 		"exception": [{"prev": "war", "base": "ose", "link": "os"}]
 	},
 	"noun-ary": {
@@ -26,6 +29,7 @@
 		"link": "ar",
 		"from": "noun",
 		"to": "adj",
+		"category" : "suffix",
 		"description": "connected with or pertaining to"
 	},
 	"noun-al": {
@@ -34,6 +38,7 @@
 		"from": "noun",
 		"to": "adj",
 		"description": "relating to",
+		"category" : "suffix",
 		"consonant-dissonance" : ["l", "r"]
 	},
 	"noun-id": {
@@ -41,6 +46,7 @@
 		"link": "id",
 		"from": "noun",
 		"to": "adj",
+		"category" : "suffix",
 		"description": "belonging to the class of"
 	},
 	"noun-eer": {
@@ -48,6 +54,7 @@
 		"link": "eer",
 		"from": "noun",
 		"to": "noun",
+		"category" : "suffix",
 		"description": "one who operates or deals in"
 	},
 	"noun-ary2": {
@@ -55,6 +62,7 @@
 		"link": "ari",
 		"from": "noun",
 		"to": "noun",
+		"category" : "suffix",
 		"description": "one engaged in"
 	},
 	"noun-ize": {
@@ -63,6 +71,7 @@
 		"from": "noun",
 		"to": "verb",
 		"conj": "a",
+		"category" : "suffix",
 		"description": "to cause to become"
 	},
 	"verb-tion": {
@@ -72,6 +81,7 @@
 		"to": "noun",
 		"consonant-padding": "t",
 		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "de", "new": "s"}, {"old": "se", "new": "s-"}],
+		"category" : "suffix",
 		"description": "the act of" 
 	},
 	"verb-nce": {
@@ -80,6 +90,7 @@
 		"from": "verb",
 		"to": "noun",
 		"stem-change": "yes",
+		"category" : "suffix",
 		"description": "process, state, or quality of"
 	},
 	"verb-tor": {
@@ -88,6 +99,7 @@
 		"from": "verb",
 		"to": "noun",
 		"tail-mutator": [{"old": "ce", "new": "c"}, {"old": "de", "new": "s"}, {"old": "za", "new": "z-"}, {"old": "se", "new": "s-"}],
+		"category" : "suffix",
 		"description": "agent who performs"
 	},
 	"verb-nt": {
@@ -96,6 +108,7 @@
 		"from": "verb",
 		"to": "adj",
 		"stem-change": "yes",
+		"category" : "suffix",
 		"description": "in a state of"
 	},
 	"verb-tory": {
@@ -104,6 +117,7 @@
 		"from": "verb",
 		"to": "adj",
 		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
+		"category" : "suffix",
 		"description": "having to do with"
 	},
 	"verb-tory2": {
@@ -112,6 +126,7 @@
 		"from": "verb",
 		"to": "noun",
 		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
+		"category" : "suffix",
 		"description": "place where occurs"
 	},
 	"verb-torium": {
@@ -120,6 +135,7 @@
 		"from": "verb",
 		"to": "noun",
 		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
+		"category" : "suffix",
 		"description": "place where occurs",
 		"hidden": "true"
 	},
@@ -128,6 +144,7 @@
 		"link": "it",
 		"from": "adj",
 		"to": "noun",
+		"category" : "suffix",
 		"description": "condition or quality of being"
 	},
 	"adj-tude": {
@@ -135,6 +152,7 @@
 		"link": "itudin",
 		"from": "adj",
 		"to": "noun",
+		"category" : "suffix",
 		"description": "abstract concept of"
 	},
 	"adj-ate": {
@@ -142,6 +160,7 @@
 		"link": "at",
 		"from": "adj",
 		"to": "verb",
+		"category" : "suffix",
 		"description": "to make"
 	},
 	"adj-ify": {
@@ -149,6 +168,7 @@
 		"link": "ifica",
 		"from": "adj",
 		"to": "verb",
+		"category" : "suffix",
 		"description": "to cause to become"
 	},
 	"adj-ize": {
@@ -156,6 +176,7 @@
 		"link": "iza",
 		"from": "adj",
 		"to": "verb",
+		"category" : "suffix",
 		"description": "to make into, or subject to"
 	}
 }

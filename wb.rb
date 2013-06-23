@@ -2,9 +2,12 @@ require 'rubygems'
 require 'json'
 require 'socket'
 
+# Language data
 @dictionary = {}
 @affixes = {}
+@rules = {}
 
+# Options
 @use_exceptions = true
 
 # Import language
@@ -14,6 +17,16 @@ end
 
 def import_language(lang)
 	@affixes= JSON.parse(IO.read(lang+".affixes"));
+end
+
+def import_rules(lang)
+	@rules = JSON.parse(IO.read(lang+".rules"));
+end
+
+def import(lang)
+	import_dictionary(lang);
+	import_language(lang);
+	import_rules(lang);
 end
 
 # Utilities
@@ -65,7 +78,7 @@ end
 
 def get_category(token)
 	r = token["category"]
-	if r == nil then r = token["to"] end
+	if r == "suffix" then r = token["to"] end
 	return r
 end
 
@@ -131,38 +144,30 @@ def generate(input)
 	
 		current = "";
 		entries = []
+		orderstring = ""
 		
-		# Get entries, rout, and check for errors
+		# Preprocess: get entries, verify ordering, rout, and check for errors
 		for j in 0..parsed["words"][i].length-1
 			token = parsed["words"][i][j]
 			entries[j] = get_entry(token)
 			entry = entries[j]
 			ok = true
 			
-			# Rout - replace the next token with another one specified by the current one
-			if entry["rout"] != nil and j < parsed["words"][i].length-1
-				entry["rout"].each do |r|
-					print "HERE\n"
-					if parsed["words"][i][j+1] == r[0]
-						parsed["words"][i][j+1] = r[1]
-					end
-				end
-			end
-			
+			# Check for errors on the token
 			if entry == nil
-				print "ERROR: token \"", token, "\" not found."
+				print "ERROR: token \"", token, "\" not found.\n"
 				ok = false
 			end
 
-			if j > 0 and entry["from"] != nil and get_category(entries[j-1]) != entry["from"]
-				print "ERROR: cannot use affix \"", comp, "\" following \"", get_category(entries[j-1]), "s\".";
+			if entry != nil and j > 0 and entry["from"] != nil and get_category(entries[j-1]) != entry["from"]
+				print "ERROR: cannot use affix \"", token, "\" following type \"", get_category(entries[j-1]), "\".\n";
 				ok = false
 			end
 			
-			if entry["follows"] != nil
+			if entry != nil and entry["follows"] != nil
 				entry["follows"].each do |ending|
 					if j > 0 and entries[j-1]["base"][-ending.length..-1] != ending
-						print "ERROR: affix \"", comp, "\" must follow \"", entry["follows"], "\".\n"
+						print "ERROR: affix \"", token, "\" must follow \"", entry["follows"], "\".\n"
 						print "(found #{entries[j-1]["base"][-ending.length..-1]}) instead\n"
 						ok = false
 					end
@@ -172,11 +177,29 @@ def generate(input)
 			if ok == false
 				output[i] = "nil"
 				break
+			else
+				# Rout - replace the next token with another one specified by the current one
+				if entry["rout"] != nil and j < parsed["words"][i].length-1
+					entry["rout"].each do |r|
+						if parsed["words"][i][j+1] == r[0]
+							parsed["words"][i][j+1] = r[1]
+						end
+					end
+				end
+			
+				# Add to the type string
+				orderstring += entry["category"][0]
 			end
 		end
 		
+		# Check that the source language accepts the order of categories
+		if !(orderstring =~ Regexp.new(@rules["order"]) )
+			print "ERROR: unacceptable ordering of categories\n"
+			output[i] = "nil"
+		end
+		
 		# If there was an error, skip this word
-		if output[i] == "nil" then continue end
+		if output[i] == "nil" then next end
 		
 		# Create the word
 		for j in 0..parsed["words"][i].length-1
@@ -276,7 +299,7 @@ def generate(input)
 							
 						# duplicate following consonant
 						elsif type[0] == "double"
-							add = link + next_letter
+							add = link + next_letter + "+"
 							break
 
 						# remove next letter
@@ -307,13 +330,22 @@ def generate(input)
 			end
 			
 			# Prune matching letters
-			count = 0
-			for count in 0..add.length
-				if add[count] != current[current.length - (count + 1)] then break end
+			if current[current.length-1] == "+"
+				# '+' blocks pruning. Used in double assimilation
+				current = current[0..current.length-2]
+				
+			else
+				for count in 0..add.length - 1
+				
+					reg = Regexp.new(add[0..count] + "$")
+					if current =~ reg
+						add = add[count+1..add.length-1]
+						break
+					end
+				end
 			end
 			
-			add = add[count..add.length-1]
-			
+			# Add the new chunk to the working string
 			current += add;
 			cur_cat = get_category(entry)
 			print "so far: #{current}\n"
@@ -378,8 +410,7 @@ def run_server(port)
 end
 
 # Startup
-import_dictionary("latin");
-import_language("latin");
+import("latin")
 
 if ARGV.length > 0
 	if ARGV[0] == "run"

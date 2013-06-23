@@ -4,7 +4,7 @@ require 'socket'
 
 # Language data
 @dictionary = {}
-@affixes = {}
+@suffixes = {}
 @rules = {}
 
 # Options
@@ -16,7 +16,7 @@ def import_dictionary(lang)
 end
 
 def import_language(lang)
-	@affixes= JSON.parse(IO.read(lang+".affixes"));
+	@suffixes= JSON.parse(IO.read(lang+".affixes"));
 end
 
 def import_rules(lang)
@@ -72,7 +72,7 @@ def get_entry(token)
 	if is_word(token)
 		return @dictionary[token]
 	else
-		return @affixes[token]
+		return @suffixes[token]
 	end
 end
 
@@ -160,14 +160,14 @@ def generate(input)
 			end
 
 			if entry != nil and j > 0 and entry["from"] != nil and get_category(entries[j-1]) != entry["from"]
-				print "ERROR: cannot use affix \"", token, "\" following type \"", get_category(entries[j-1]), "\".\n";
+				print "ERROR: cannot use suffix \"", token, "\" following type \"", get_category(entries[j-1]), "\".\n";
 				ok = false
 			end
 			
 			if entry != nil and entry["follows"] != nil
 				entry["follows"].each do |ending|
 					if j > 0 and entries[j-1]["base"][-ending.length..-1] != ending
-						print "ERROR: affix \"", token, "\" must follow \"", entry["follows"], "\".\n"
+						print "ERROR: suffix \"", token, "\" must follow \"", entry["follows"], "\".\n"
 						print "(found #{entries[j-1]["base"][-ending.length..-1]}) instead\n"
 						ok = false
 					end
@@ -241,13 +241,7 @@ def generate(input)
 				current += "o"
 			end
 			
-			# Make changes to the new part -------------
-			
-			# handle cut assimilation or other letter-removers
-			if current[-1,1] == "-"
-				current = current[0..current.length-2]
-				add = add[1, add.length-1]
-			end
+			# Select and modify to the new part -------------
 			
 			# Check for padding
 			if entry["vowel-padding"] != nil and is_consonant(current[-1,1])
@@ -314,6 +308,12 @@ def generate(input)
 						end
 					end
 				end
+			end
+			
+			# handle cut assimilation or other letter-removers
+			if current[-1,1] == "-"
+				current = current[0..current.length-2]
+				add = add[1, add.length-1]
 			end
 			
 			# handle consonant dissonance

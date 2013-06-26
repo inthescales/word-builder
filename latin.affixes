@@ -1,46 +1,60 @@
 {
-	"noun-ine": {
-		"base": "ine",
-		"link": "in",
-		"from": "noun",
-		"to": "adj",
+	"noun-nature_of":{
+		"from" : "noun",
+		"to" : "adj",
 		"category" : "suffix",
-		"description": "having the nature of"
+		"rout" : [["default", "noun-ine"]],
+		"description" : "having the nature of"
 	},
-	"noun-ile": {
-		"base": "ile",
-		"link": "il",
-		"from": "noun",
-		"to": "adj",
-		"category" : "suffix",
-		"description": "the capacity of"
-	},
+		"noun-ine": {
+			"base": "ine",
+			"link": "in",
+			"from": "noun",
+			"to": "adj",
+			"category" : "suffix",
+			"hidden" : "true"
+		},
+		"noun-ile": {
+			"base": "ile",
+			"link": "il",
+			"from": "noun",
+			"to": "adj",
+			"category" : "suffix",
+			"hidden" : "true"
+		},
 	"noun-ous": {
 		"base": "ous",
 		"link": "os",
 		"from": "noun",
 		"to": "adj",
-		"description": "abounding in",
+		"exception": [{"prev": "war", "base": "ose", "link": "os"}],
 		"category" : "suffix",
-		"exception": [{"prev": "war", "base": "ose", "link": "os"}]
+		"description": "abounding in"
 	},
-	"noun-ary": {
-		"base": "ary",
-		"link": "ar",
-		"from": "noun",
-		"to": "adj",
+	"noun-relating_to" : {
+		"from" : "noun",
+		"to" : "adj",
 		"category" : "suffix",
-		"description": "connected with or pertaining to"
+		"rout" : [["default", "noun-al"]],
+		"description" : "connected with or relating to"
 	},
-	"noun-al": {
-		"base": "a",
-		"link": "a",
-		"from": "noun",
-		"to": "adj",
-		"description": "relating to",
-		"category" : "suffix",
-		"consonant-dissonance" : ["l", "r"]
-	},
+		"noun-ary": {
+			"base": "ary",
+			"link": "ar",
+			"from": "noun",
+			"to": "adj",
+			"category" : "suffix",
+			"hidden" : "true"
+		},
+		"noun-al": {
+			"base": "a",
+			"link": "a",
+			"from": "noun",
+			"to": "adj",
+			"consonant-dissonance" : ["l", "r"],
+			"category" : "suffix",
+			"hidden" : "true"
+		},
 	"noun-id": {
 		"base": "id",
 		"link": "id",
@@ -65,15 +79,31 @@
 		"category" : "suffix",
 		"description": "one engaged in"
 	},
-	"noun-ize": {
-		"base": "ize",
-		"link": "iza",
-		"from": "noun",
-		"to": "verb",
-		"conj": "a",
+	"noun-make_into" : {
+		"from" : "noun",
+		"to" : "verb",
+		"rout" : [["final-stress", "noun-ify"], ["default", "noun-ize"]],
 		"category" : "suffix",
-		"description": "to cause to become"
+		"description" : "to make into"
 	},
+		"noun-ize": {
+			"base": "ize",
+			"link": "iza",
+			"from": "noun",
+			"to": "verb",
+			"conj": "a",
+			"category" : "suffix",
+			"hidden" : "true"
+		},
+		"noun-ify": {
+			"base": "ify",
+			"link": "ific",
+			"from": "noun",
+			"to": "verb",
+			"conj": "a",
+			"category" : "suffix",
+			"hidden" : "true"
+		},
 	"verb-tion": {
 		"base": "ion",
 		"link": "ion",
@@ -120,25 +150,31 @@
 		"category" : "suffix",
 		"description": "having to do with"
 	},
-	"verb-tory2": {
-		"base": "tory",
-		"link": "tori",
-		"from": "verb",
-		"to": "noun",
-		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
+	"verb-place" : {
+		"from" : "verb",
+		"to" : "noun",
 		"category" : "suffix",
-		"description": "place where occurs"
+		"rout" : [["default", "verb-tory2"]],
+		"description": "place used for"
 	},
-	"verb-torium": {
-		"base": "torium",
-		"link": "tori",
-		"from": "verb",
-		"to": "noun",
-		"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
-		"category" : "suffix",
-		"description": "place where occurs",
-		"hidden": "true"
-	},
+		"verb-tory2": {
+			"base": "tory",
+			"link": "tori",
+			"from": "verb",
+			"to": "noun",
+			"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
+			"category" : "suffix",
+			"hidden": "true"
+		},
+		"verb-torium": {
+			"base": "torium",
+			"link": "tori",
+			"from": "verb",
+			"to": "noun",
+			"tail-mutator": [{"old": "ce", "new": "ct"}, {"old": "za", "new": "z-"}],
+			"category" : "suffix",
+			"hidden": "true"
+		},
 	"adj-ty": {
 		"base": "ity",
 		"link": "it",
@@ -155,28 +191,35 @@
 		"category" : "suffix",
 		"description": "abstract concept of"
 	},
-	"adj-ate": {
-		"base": "ate",
-		"link": "at",
-		"from": "adj",
-		"to": "verb",
+	"adj-make_into" : {
+		"from" : "adj",
+		"to" : "verb",
+		"rout" : [["final-stress", "adj-ify"], ["default", "adj-ize"]],
 		"category" : "suffix",
-		"description": "to make"
+		"description" : "to cause to be"
 	},
-	"adj-ify": {
-		"base": "ify",
-		"link": "ifica",
-		"from": "adj",
-		"to": "verb",
-		"category" : "suffix",
-		"description": "to cause to become"
-	},
-	"adj-ize": {
-		"base": "ize",
-		"link": "iza",
-		"from": "adj",
-		"to": "verb",
-		"category" : "suffix",
-		"description": "to make into, or subject to"
-	}
+		"adj-ate": {
+			"base": "ate",
+			"link": "at",
+			"from": "adj",
+			"to": "verb",
+			"category" : "suffix",
+			"hidden" : "true"
+		},
+		"adj-ify": {
+			"base": "ify",
+			"link": "ifica",
+			"from": "adj",
+			"to": "verb",
+			"category" : "suffix",
+			"hidden" : "true"
+		},
+		"adj-ize": {
+			"base": "ize",
+			"link": "iza",
+			"from": "adj",
+			"to": "verb",
+			"category" : "suffix",
+			"hidden" : "true"
+		}
 }

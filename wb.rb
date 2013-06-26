@@ -164,23 +164,30 @@ def generate(input)
 				ok = false
 			end
 			
-			if entry != nil and entry["follows"] != nil
-				entry["follows"].each do |ending|
-					if j > 0 and entries[j-1]["base"][-ending.length..-1] != ending
-						print "ERROR: suffix \"", token, "\" must follow \"", entry["follows"], "\".\n"
-						print "(found #{entries[j-1]["base"][-ending.length..-1]}) instead\n"
-						ok = false
-					end
-				end
-			end
-			
 			if ok == false
+				# If there was an error, return nil
 				output[i] = "nil"
 				break
 			else
-				# Rout - replace the next token with another one specified by the current one
-				if entry["rout"] != nil and j < parsed["words"][i].length-1
+				# rout - replace this token with another based on some rule
+				if entry["rout"] != nil
 					entry["rout"].each do |r|
+						if r[0] == "final-stress"
+							if true
+								parsed["words"][i][j] = r[1]
+								entries[j] = get_entry(r[1])
+								break
+							end
+						elsif r[0] == "default"
+							parsed["words"][i][j] = r[1]
+							entries[j] = get_entry(r[1])
+						end					
+					end
+				end
+				
+				# next-rout - replace the next token as specified by the current one
+				if entry["next-rout"] != nil and j < parsed["words"][i].length-1
+					entry["next-rout"].each do |r|
 						if parsed["words"][i][j+1] == r[0]
 							parsed["words"][i][j+1] = r[1]
 						end

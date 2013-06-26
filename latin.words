@@ -149,7 +149,7 @@
 		"link" : "audi",
 		"conj" : "i",
 		"category" : "verb",
-		"rout" : [["verb-tory2", "verb-torium"]]
+		"next-rout" : [["verb-tory2", "verb-torium"]]
 	},
 	"lead" : {
 		"base" : "duce",

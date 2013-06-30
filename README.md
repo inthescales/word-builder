@@ -22,4 +22,9 @@ Acceptable input is a sequence of the words (e.g. 'money') and suffixes (e.g. no
 Suffix must follow a word of the type listed. For instance, 'noun-ous' must follow a noun, whether it is a basic noun
 or another type of word transformed into a noun by another suffixx (like verb-tion).
 
-A web interface is in the works to make this all more convenient.
+Html interface
+--------------
+
+wb-genhtml.rb will generate an html page with a graphical interface for word builder, styled by wb.css. Any language
+files you wish to use must be in the same directory as wb-genhtml.css when you run it. The html communicates via post
+request, so a server is necessary to interpret these requests and call into wb.rb.

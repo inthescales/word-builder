@@ -1,0 +1,152 @@
+body {
+	margin:0px;
+	background-color:rgb(231,213,171);
+}
+
+p {
+	margin:0px;
+	padding:0px;
+}
+
+h1 {
+	font-size:16px;
+	display:inline;
+}
+
+select {
+	margin:0px;
+}
+
+.topdiv {
+	height:35px;
+	margin:0px;
+	padding:0px;
+	display:block;
+	background-color:rgb(50,50,50);
+}
+
+.langsel{
+
+	width:1000px;
+	padding:5px;
+	margin:5px auto 0px auto;
+	border:1px black solid;
+	background-color:rgb(241,231,205);
+}
+
+.langdiv {
+	height:300px;
+	width:1000px;
+	margin:5px auto;
+	padding:5px;
+	display:block;
+	border:1px black solid;
+	background-color:rgb(241,231,205);
+}
+
+.outputdiv {
+	
+	width:1000px;
+	margin:5px auto;
+	padding:5px;
+	display:block;
+	border:1px black solid;
+	background-color:rgb(241,231,205);
+}
+
+#elements_list {
+	margin:5px;
+	padding:5px 0px 0px 5px;
+	min-height:35px;
+	display:none;
+	border:1px red solid;
+}
+
+.elementtile {
+	margin:0px 5px 5px 0px;
+	padding:5px;
+	border:1px black solid;
+	background-color:rgb(220,190,180);
+	display:inline-block;
+	white-space:nowrap;
+}
+
+.worddiv {
+	width:850px;
+	margin:0px auto;
+	border: 1px solid blue;
+}
+
+.affixdiv {
+	width:850px;
+	margin:0px auto;
+	border:1px black solid;
+	display:none;
+}
+
+.worddiv select {
+	width:100px;
+	display:inline;
+}
+
+.addbutton {
+	width:100px;
+}
+
+.affixdiv select {
+	min-width:100px;
+}
+
+.catdiv {
+	width:200px;
+	height:135px;
+	display:inline-block;
+	border:1px solid red;
+}
+
+.addbutton {
+	display:block;
+	margin:2px auto;
+}
+
+#button_submit {
+	background:0;
+	background-color:rgb(250,85,75);
+	color:white;
+}
+
+#button_submit:hover {
+	background:0;
+	background-color:rgb(250,150,140);
+	color:white;
+}
+
+#button_submit :active{
+	background:0;
+	background-color:rgb(250,190,180);
+	color:white;
+}
+
+#button_clear {
+	background:0;
+	background-color:rgb(85,175,250);
+	color:white;
+}
+
+#button_clear:hover{
+	background:0;
+	background-color:rgb(150,200,250);
+	color:white;
+}
+
+#button_clear:active{
+	background:0;
+	background-color:rgb(190,225,250);
+	color:white;
+}
+
+.ui-button-text {
+
+	padding:3px 6px !important;
+	font-size:15px;
+}

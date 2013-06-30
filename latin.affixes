@@ -63,22 +63,38 @@
 		"category" : "suffix",
 		"description": "belonging to the class of"
 	},
-	"noun-eer": {
-		"base": "eer",
-		"link": "eer",
-		"from": "noun",
-		"to": "noun",
+	"noun-agent": {
+		"from" : "noun",
+		"to" : "noun",
 		"category" : "suffix",
-		"description": "one who operates or deals in"
+		"rout" : [["default", "noun-er"]],
+		"description" : "one who engages with or deals in"
 	},
-	"noun-ary2": {
-		"base": "ary",
-		"link": "ari",
-		"from": "noun",
-		"to": "noun",
-		"category" : "suffix",
-		"description": "one engaged in"
-	},
+		"noun-er": {
+			"base": "er",
+			"link": "er",
+			"from": "noun",
+			"to": "noun",
+			"category" : "suffix",
+			"hidden" : "true"
+		},
+		"noun-eer": {
+			"base": "eer",
+			"link": "eer",
+			"from": "noun",
+			"to": "noun",
+			"tail-mutator": [{"old": "i", "new": "i-"}],
+			"category" : "suffix",
+			"hidden" : "true"
+		},
+		"noun-ary2": {
+			"base": "ary",
+			"link": "ari",
+			"from": "noun",
+			"to": "noun",
+			"category" : "suffix",
+			"hidden" : "true"
+		},
 	"noun-make_into" : {
 		"from" : "noun",
 		"to" : "verb",

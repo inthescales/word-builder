@@ -109,7 +109,7 @@
 		"base" : "bellum",
 		"link" : "bell",
 		"category" : "noun",
-		"exception" : [{"next": "noun-ous", "link": "bellic"}]
+		"exception" : [{"req" : [["+1","noun-ous"]], "link": "bellic"}]
 	},
 	"beautiful": {
 		"base" : "pulcher",
@@ -136,7 +136,7 @@
 		"link" : "cade",
 		"conj" : "e",
 		"category" : "verb",
-		"exception" : [{"prev": "in", "base": "cide", "link": "cide"}, {"prev": "down_from", "link": "cide"}, {"prev": "in", "next": "verb-nce", "link": "cide"}]
+		"exception" : [{"req" : [["-1","in"]], "base": "cide", "link": "cide"}, {"req" : [["-1","down_from"]], "link": "cide"}, {"req" : [["-1","in"], ["+1","verb-nce"]], "link": "cide"}]
 	},
 	"follow" : {
 		"base" : "sequi",
@@ -149,7 +149,7 @@
 		"link" : "audi",
 		"conj" : "i",
 		"category" : "verb",
-		"next-rout" : [["verb-tory2", "verb-torium"]]
+		"rout-next" : [["verb-tory2", "verb-torium"]]
 	},
 	"lead" : {
 		"base" : "duce",
@@ -168,7 +168,7 @@
 		"link" : "vise",
 		"conj" : "e",
 		"category" : "verb",
-		"exception" : [{"next": "verb-nce", "link": "vide"}]
+		"exception" : [{"req" : [["+1","verb-nce"]], "link": "vide"}]
 	},
 	"stand" : {
 		"base" : "state",

@@ -82,40 +82,6 @@ def get_category(token)
 	return r
 end
 
-def get_base(entry, prev, nex)
-	return get_exception("base", entry, prev, nex)
-end
-
-def get_link(entry, prev, nex)
-	return get_exception("link", entry, prev, nex)
-end
-
-def get_exception(term, entry, prev, nex)
-
-	if @use_exceptions == false or entry["exception"] == nil then return entry[term] end
-
-	entry["exception"].each do |ex|
-		bail = false
-
-		if ex[term] == nil
-			then bail = true end
-
-		if !bail and ex["prev"] != nil and ex["prev"] != prev
-			then bail = true end
-
-		if !bail and ex["next"] != nil and ex["next"] != nex
-			then bail = true end
-
-		if !bail
-			return ex[term]
-		else
-			return entry[term]
-		end
-	
-	end
-	
-end
-
 # Target language spelling rules
 def spelling(lang, word)
 
@@ -169,6 +135,28 @@ def generate(input)
 				output[i] = "nil"
 				break
 			else
+				# exception - alter this entry based on surrounding tokens
+				if @use_exceptions == true and entries[j]["exception"] != nil
+					has_exception = false
+					entry["exception"].each do |ex|
+					
+						ex["req"].each do |cond|
+							
+							temp = cond[0].to_i
+							if temp != 0 and parsed["words"][i][j + temp] == cond[1]
+								
+								has_exception = true
+								break
+							end
+						end
+						
+						if has_exception
+							entries[j]["base"] = ex["base"]
+							entries[j]["link"] = ex["link"]
+						end
+					end
+				end
+				
 				# rout - replace this token with another based on some rule
 				if entry["rout"] != nil
 					entry["rout"].each do |r|
@@ -185,9 +173,9 @@ def generate(input)
 					end
 				end
 				
-				# next-rout - replace the next token as specified by the current one
-				if entry["next-rout"] != nil and j < parsed["words"][i].length-1
-					entry["next-rout"].each do |r|
+				# rout-next - replace the next token as specified by the current one
+				if entry["rout-next"] != nil and j < parsed["words"][i].length-1
+					entry["rout-next"].each do |r|
 						if parsed["words"][i][j+1] == r[0]
 							parsed["words"][i][j+1] = r[1]
 						end
@@ -214,13 +202,11 @@ def generate(input)
 			# set up some terms
 			add = "";
 			comp = parsed["words"][i][j];
-			next_comp = parsed["words"][i][j+1]
-			prev_comp = parsed["words"][i][j-1]
 			entry = entries[j]
 			next_entry = entries[j+1]
 			prev_entry = entries[j-1]
-			base = get_base(entry, prev_comp, next_comp)
-			link = get_link(entry, prev_comp, next_comp)
+			base = entry["base"]
+			link = entry["link"]
 			print "base = ", base, ", link = ", link, "\n"
 			
 			# Make changes to the word so far ------------

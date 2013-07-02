@@ -27,7 +27,7 @@
 		"link": "os",
 		"from": "noun",
 		"to": "adj",
-		"exception": [{"prev": "war", "base": "ose", "link": "os"}],
+		"exception": [{"req" : [["-1","war"]], "base": "ose", "link": "os"}],
 		"category" : "suffix",
 		"description": "abounding in"
 	},
